@@ -40,18 +40,12 @@ class User {
                 return;
             }
             if (res.length) {
-                cb(null, {
-                    id: res[0].id,
-                    firstname: res[0].firstname,
-                    lastname: res[0].lastname,
-                    email: res[0].email
-                });
+                cb(null, res[0]);
                 return;
             }
             cb({ kind: "not_found" }, null);
         })
     }
-
 }
 
 module.exports = User;

@@ -25,6 +25,19 @@ const signup = (req, res, next) => {
     validatorHandler(req, res, next, schema);
 };
 
+const signin = (req, res, next) => {
+    const schema = Joi.object().keys({
+        email: Joi.string()
+            .trim()
+            .email()
+            .required(),
+        password: Joi.string()
+            .pattern(new RegExp('^[a-zA-Z0-9]{6,30}$'))
+    });
+    validatorHandler(req, res, next, schema);
+};
+
 module.exports = {
-    signup
+    signup,
+    signin
 };

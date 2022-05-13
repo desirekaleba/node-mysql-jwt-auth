@@ -19,7 +19,7 @@ const requiredCredentials = [
 ];
 
 for (const credential of requiredCredentials) {
-    if (!process.env[credential]) {
+    if (process.env[credential] === undefined) {
         logger.error(`Missing required crendential: ${credential}`);
         process.exit(1);
     }
